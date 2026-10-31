@@ -7,5 +7,5 @@
 ---
 
 **EScurses By KID194**
-Give me a star please T_T
+Give me a star please T_T  
 给个Star吧求求了 T_T
