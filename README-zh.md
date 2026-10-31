@@ -1,6 +1,8 @@
 # Escurses
 一个可以让你做出终端游戏的python库
 
+[跳转至首页](./README.md)
+
 ## 为什么你有必要选择Escurses?
   - 跨平台支持
     它可以在Windows上用，也可以在Linux上用
