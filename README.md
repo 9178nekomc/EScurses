@@ -1,7 +1,7 @@
 # Home Page
  **首页**
 
-*[跳转至中文文档](./README-zh.md)
+[跳转至中文文档](./README-zh.md)  
 **We don't have English README for now :)**
 
 ---
