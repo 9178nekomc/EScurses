@@ -1,5 +1,6 @@
 import sys
-import os
+import os, subprocess
+import time
 if os.name == 'posix':
     import termios, tty, select
 if os.name == 'nt':
@@ -8,6 +9,11 @@ if os.name == 'nt':
 _screen = []
 _screenWidth = None
 _screenHeight = None
+
+_frameStartTime = None
+def frameStart():
+    global _frameStartTime
+    _frameStartTime = time.perf_counter()
 
 def linuxTerminalCheck():
     isTTY = os.isatty(sys.stdin.fileno())
@@ -28,9 +34,13 @@ def initGame():
     global _screen
     _screen = []
     for i in range(_screenHeight):
-        _screen.append([[] for i in range(_screenWidth)])
+        _screen.append([(' ', i+1, j+1) for j in range(_screenWidth - 1)])
 def clear():
     sys.stdout.write('\033[2J')
+    global _screen
+    _screen = []
+    for i in range(_screenHeight):
+        _screen.append([(' ', i+1, j+1) for j in range(_screenWidth - 1)])
 
 def drawChar(x, y, char):
     _screen[y-1][x-1] = (char, y, x)
@@ -69,8 +79,7 @@ def getch(nodelay=True):
 def refresh():
     for line in _screen:
         for char in line:
-            if char:
-                sys.stdout.write(f'\033[{char[1]};{char[2]}H{char[0]}')
+            sys.stdout.write(f'\033[{char[1]};{char[2]}H{char[0]}')
     sys.stdout.flush()
 
 def cursorEcho(echo=False):
@@ -81,6 +90,14 @@ def cursorEcho(echo=False):
 
 def exitGame():
     sys.stdout.write('\033[?25h')
-    sys.stdout.write('\033[2J')
+    if os.name == 'nt': subprocess.run("cls", shell=True)
+    if os.name == 'posix': subprocess.run("clear", shell=True)
     sys.stdout.flush()
     sys.exit()
+
+def sleepForFrame(fps):
+    frameTime = 1 / fps
+    elapsedTime = time.perf_counter() - _frameStartTime
+    time.sleep(max(0, (frameTime - elapsedTime) - 0.01))
+    while time.perf_counter() - _frameStartTime < 0.01:
+        pass
