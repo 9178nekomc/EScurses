@@ -1,10 +1,6 @@
 # Escurses
 一个可以让你做出终端游戏的python库
 
-> This README has not English version
-> You can wait for the next version :)
-> Or you can use translation software
-
 ## 为什么你有必要选择Escurses?
   - 跨平台支持
     它可以在Windows上用，也可以在Linux上用
@@ -45,6 +41,5 @@
   - `exitGame()`
     用于退出游戏
 
-最后就是我们并没有攻克那该死的回显，等以后吧 :)
 这基本就是全部内容了，祝你们能做出好的游戏！（虽然这个库基本没啥用）
     
