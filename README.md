@@ -327,5 +327,6 @@ have no first-hand verification for.
 
 ## License
 
-See [NOTICE.md](./NOTICE.md). Upstream declared no license, so this fork only claims the
-newly written code; the original author's choice governs the rest.
+EScurses is released under the MIT License. See [LICENSE](./LICENSE) for the full text
+and [NOTICE.md](./NOTICE.md) for provenance. The upstream project added its MIT license
+on 2026-11-04; this fork includes that license and the original copyright notice.

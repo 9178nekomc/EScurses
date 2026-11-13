@@ -367,5 +367,6 @@ python -m pyflakes escurses/
 
 ## 授权
 
-见 [NOTICE.md](./NOTICE.md)。上游未声明许可证，本 fork 的声明只覆盖新增代码，
-最终以原作者 KID194 的选择为准。
+本项目以 MIT 许可证发布。完整文本见 [LICENSE](./LICENSE)，来源与版权说明见
+[NOTICE.md](./NOTICE.md)。上游已于 2026-11-04 添加 MIT 许可证；本 fork 已同步，
+并保留原作者的版权声明。
