@@ -15,6 +15,13 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         python: ["3.8", "3.11", "3.13"]
+        # ubuntu-latest 自 2026-10 起是 Ubuntu 26.04，setup-python 没有 3.8 构建。
+        exclude:
+          - os: ubuntu-latest
+            python: "3.8"
+        include:
+          - os: ubuntu-22.04
+            python: "3.8"
     steps:
       - uses: actions/checkout@v4
 
