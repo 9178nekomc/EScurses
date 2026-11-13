@@ -283,7 +283,8 @@ def _rgb_to_256(r: int, g: int, b: int) -> int:
             return 16
         if r > 248:
             return 231
-        return 232 + (r - 8) // 10
+        # 248 会算出 256，夹到最后一个合法灰阶 255。
+        return min(255, 232 + (r - 8) // 10)
     steps = (0, 95, 135, 175, 215, 255)
     ri = min(range(6), key=lambda i: abs(steps[i] - r))
     gi = min(range(6), key=lambda i: abs(steps[i] - g))
